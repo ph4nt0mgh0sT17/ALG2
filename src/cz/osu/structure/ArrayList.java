@@ -47,6 +47,11 @@ public class ArrayList {
         }
     }
 
+    /**
+     * Removes the value at given index.
+     * @param index The given index.
+     * @throws Exception Throws exception if the index is not valid.
+     */
     public void removeAt(int index) throws Exception {
         if (!isIndexValid(index)) {
             throw new Exception("The index is out of bounds!");
@@ -56,6 +61,11 @@ public class ArrayList {
         moveListAfterRemove(index);
     }
 
+    /**
+     * Search the value in the list. If found return boolean value.
+     * @param value The searched value.
+     * @return Boolean value.
+     */
     public boolean search(int value) {
         for (int i = 0; i < arrayList.length; i++) {
             if (arrayList[i] == value) {
@@ -66,10 +76,21 @@ public class ArrayList {
         return false;
     }
 
+    /**
+     * Search quantity of values in the list.
+     * @param value The value contained in the list.
+     * @return The quantity of values.
+     */
     public int searchQuantity(int value) {
         return internalSearchQuantity(value);
     }
 
+    /**
+     * Searches the value at given index.
+     * @param index The given index.
+     * @return The value on given index.
+     * @throws Exception Throws exception if the index is not valid.
+     */
     public int searchAt(int index) throws Exception {
         if (!isIndexValid(index)) {
             throw new Exception("The index is out of bounds!");
@@ -78,6 +99,9 @@ public class ArrayList {
         return arrayList[index];
     }
 
+    /**
+     * Count of values in the list.
+     */
     public int count() {
         return arrayList.length;
     }
@@ -94,6 +118,10 @@ public class ArrayList {
         return valueQuantity;
     }
 
+    /**
+     * Move whole list after remove to be in perfect order.
+     * @param index Index of removed value.
+     */
     private void moveListAfterRemove(int index) {
         for (int i = index; i < arrayList.length-1; i++) {
             arrayList[i] = arrayList[i+1];
