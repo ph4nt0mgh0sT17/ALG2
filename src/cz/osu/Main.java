@@ -1,47 +1,27 @@
 package cz.osu;
 
-import cz.osu.structure.ArrayList;
-import cz.osu.structure.LinkedList;
+import cz.osu.sorting.BubbleSort;
 
 import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        /*LinkedList newList = new LinkedList();
+        int[] array = new int[10];
 
-        Random random = new Random();
+        Random rnd = new Random();
 
-        for (int i = 1; i <= 25; i++) {
-            newList.add(i);
+        for (int i = 0; i < 10; i++) {
+            array[i] = rnd.nextInt(100);
         }
 
-        newList.removeAt(0);
-        newList.removeAt(5);
+        BubbleSort.sort(array);
 
-        System.out.println(newList);
-        System.out.println(newList.renderList());*/
-
-        ArrayList newArrayList = new ArrayList();
-
-        for (int i = 0; i < 50; i++) {
-            newArrayList.add(i*2);
+        for (int value : array) {
+            System.out.print(String.format("%s; ",value));
         }
 
-        for (int i = 0; i < newArrayList.count(); i++) {
-            System.out.print(newArrayList.searchAt(i) +"; ");
-        }
 
-        System.out.println();
-
-        int[] copyArray = new int[] {
-                15, 56, 44, 156, 45, 77
-        };
-
-        ArrayList anotherList = new ArrayList(copyArray);
-
-        for (int i = 0; i < anotherList.count(); i++) {
-            System.out.print(anotherList.searchAt(i) +"; ");
-        }
     }
+
 }
