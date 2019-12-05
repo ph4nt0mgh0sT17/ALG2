@@ -1,8 +1,11 @@
 package cz.osu.sorting;
 
-import javax.swing.*;
-
 public class BubbleSort {
+
+    /**
+     * Sorts given int array using Bubble Sort algorithm.
+     * @param array The given integer array.
+     */
     public static void sort(int[] array) {
         internalSort(array);
     }
