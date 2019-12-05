@@ -1,6 +1,6 @@
 package cz.osu;
 
-import cz.osu.sorting.BubbleSort;
+import cz.osu.sorting.SelectionSort;
 
 import java.util.Random;
 
@@ -15,7 +15,7 @@ public class Main {
             array[i] = rnd.nextInt(100);
         }
 
-        BubbleSort.sort(array);
+        SelectionSort.sort(array);
 
         for (int value : array) {
             System.out.print(String.format("%s; ",value));
