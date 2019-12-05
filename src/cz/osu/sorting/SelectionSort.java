@@ -25,18 +25,6 @@ public class SelectionSort {
     }
 
     /**
-     * Swaps array values - First index with second index.
-     * @param array The given array where values will be swapped.
-     * @param firstIndex The index of first value.
-     * @param secondIndex The index of second value.
-     */
-    private static void swapArrayValues(int[] array, int firstIndex, int secondIndex) {
-        int tempValue = array[firstIndex];
-        array[firstIndex] = array[secondIndex];
-        array[secondIndex] = tempValue;
-    }
-
-    /**
      * Finds minimum value in the array and gets its index.
      * @param array The array where the value is found.
      * @param i The index of outer loop.
@@ -51,4 +39,18 @@ public class SelectionSort {
 
         return minimumIndex;
     }
+
+    /**
+     * Swaps array values - First index with second index.
+     * @param array The given array where values will be swapped.
+     * @param firstIndex The index of first value.
+     * @param secondIndex The index of second value.
+     */
+    private static void swapArrayValues(int[] array, int firstIndex, int secondIndex) {
+        int tempValue = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = tempValue;
+    }
+
+
 }
