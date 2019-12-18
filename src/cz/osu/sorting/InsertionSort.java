@@ -15,21 +15,25 @@ public class InsertionSort {
             int currentValue = array[i];
             int currentIndex = i;
 
-            currentIndex = innerInsertionSort(array, currentIndex, currentValue);
-
-            array[currentIndex] = currentValue;
+            innerInsertionSort(array, currentIndex, currentValue);
         }
     }
 
-    private static int innerInsertionSort(int[] array, int currentIndex, int currentValue) {
+    /**
+     * Moves currentValue to the place where it is as value in the right place
+     * @param array The array.
+     * @param currentIndex Current index of our value.
+     * @param currentValue Our value.
+     */
+    private static void innerInsertionSort(int[] array, int currentIndex, int currentValue) {
 
-        // Gets the current value to the place where it should be in sorted array
+        // Moves current value to the most left place in the array so it is ordered
+        // Checks if current value is lesser than previous value so I can swap these values, if not while loop will end
         while (currentIndex > 0 && currentValue < array[currentIndex - 1]) {
             array[currentIndex] = array[currentIndex - 1];
+            array[currentIndex-1] = currentValue;
             currentIndex--;
-        }
 
-        // Returns the index where the current value should be stored
-        return currentIndex;
+        }
     }
 }
