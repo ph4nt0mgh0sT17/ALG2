@@ -15,7 +15,7 @@ public class Main {
             array[i] = rnd.nextInt(1000);
         }
 
-        QuickSort.sort(array);
+        SelectionSort.sort(array);
 
         for (int i : array) {
             System.out.print(i + "; ");

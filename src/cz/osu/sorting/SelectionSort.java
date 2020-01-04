@@ -16,10 +16,7 @@ public class SelectionSort {
      */
     private static void internalSelectionSort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
-            int minimumIndex = i;
-
-            minimumIndex = findMinimumValue(array,i,minimumIndex);
-
+            int minimumIndex = findMinimumValue(array,i);
             swapArrayValues(array, minimumIndex, i);
         }
     }
@@ -30,7 +27,9 @@ public class SelectionSort {
      * @param i The index of outer loop.
      * @param minimumIndex The minimum index to indicate where the minimum value is.
      */
-    private static int findMinimumValue(int[] array, int i, int minimumIndex) {
+    private static int findMinimumValue(int[] array, int i) {
+        int minimumIndex = i;
+
         for (int j = i + 1; j < array.length; j++) {
             if (array[j] < array[minimumIndex]) {
                 minimumIndex = j;
