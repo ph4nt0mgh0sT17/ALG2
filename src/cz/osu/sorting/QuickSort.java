@@ -6,49 +6,47 @@ public class QuickSort {
     }
 
     private static void internalQuickSort(int[] array, int low, int high) {
-        int pivot;
+        if (low < high) {
+            // Gets index of current pivot
+            int pivotIndex = partition(array, low, high);
 
-        if (high > low) {
-            pivot = partition(array,low,high);
-            internalQuickSort(array,low,pivot - 1);
-            internalQuickSort(array,pivot + 1, high);
+            // Sorts all arrays before pivot
+            internalQuickSort(array, low, pivotIndex-1);
+
+            // Sorts all arrays after pivot
+            internalQuickSort(array, pivotIndex+1, high);
         }
     }
 
     private static int partition(int[] array, int low, int high) {
-        int left, right, pivotItem = array[low];
-        left = low;
-        right = high;
 
-        while (left < right) {
-            while (array[left] <= pivotItem) {
-                left++;
-                if (left == array.length) {
-                    break;
-                }
+        // Gets pivot in the array -> should be last value in the array
+        int pivot = array[high];
+        int i = low;
+
+        for (int j = low; j < high; j++) {
+
+            // Checks if current value is lesser than current pivot -> these values must be before the pivot
+            if (array[j] < pivot) {
+                swap(array,i++,j);
             }
-
-            while (array[right] > pivotItem) {
-                right--;
-                if (right < 0) {
-                    break;
-                }
-            }
-
-            if (left < right)
-                swap(array,left,right);
         }
 
-        array[low] = array[right];
-        array[right] = pivotItem;
-
-        return right;
+        // Must swap these values to get pivot exactly in the order where it should be
+        swap(array, i, high);
+        return i;
     }
 
-    private static void swap(int[] array, int left, int right) {
+    /**
+     * Swaps two indexes in given array.
+     * @param array The given array.
+     * @param leftIndex Index of left value.
+     * @param rightIndex Index of right value.
+     */
+    private static void swap(int[] array, int leftIndex, int rightIndex) {
         int temp = 0;
-        temp = array[left];
-        array[left] = array[right];
-        array[right] = temp;
+        temp = array[leftIndex];
+        array[leftIndex] = array[rightIndex];
+        array[rightIndex] = temp;
     }
 }
