@@ -1,5 +1,8 @@
 package cz.osu.sorting;
 
+/**
+ * Whole logic of Bubble sort algorithm.
+ */
 public class BubbleSort {
 
     /**

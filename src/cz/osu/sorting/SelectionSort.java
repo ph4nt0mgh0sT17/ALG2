@@ -1,5 +1,8 @@
 package cz.osu.sorting;
 
+/**
+ * Whole logic of Selection sort.
+ */
 public class SelectionSort {
 
     /**
@@ -17,7 +20,7 @@ public class SelectionSort {
     private static void internalSelectionSort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
             int minimumIndex = findMinimumValue(array,i);
-            swapArrayValues(array, minimumIndex, i);
+            swap(array, minimumIndex, i);
         }
     }
 
@@ -25,7 +28,6 @@ public class SelectionSort {
      * Finds minimum value in the array and gets its index.
      * @param array The array where the value is found.
      * @param i The index of outer loop.
-     * @param minimumIndex The minimum index to indicate where the minimum value is.
      */
     private static int findMinimumValue(int[] array, int i) {
         int minimumIndex = i;
@@ -40,15 +42,15 @@ public class SelectionSort {
     }
 
     /**
-     * Swaps array values - First index with second index.
+     * Swaps array values - the first index with second index.
      * @param array The given array where values will be swapped.
-     * @param firstIndex The index of first value.
-     * @param secondIndex The index of second value.
+     * @param left The index of first value.
+     * @param right The index of second value.
      */
-    private static void swapArrayValues(int[] array, int firstIndex, int secondIndex) {
-        int tempValue = array[firstIndex];
-        array[firstIndex] = array[secondIndex];
-        array[secondIndex] = tempValue;
+    private static void swap(int[] array, int left, int right) {
+        int tempValue = array[left];
+        array[left] = array[right];
+        array[right] = tempValue;
     }
 
 

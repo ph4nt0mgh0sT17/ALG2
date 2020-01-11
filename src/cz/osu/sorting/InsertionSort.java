@@ -1,5 +1,8 @@
 package cz.osu.sorting;
 
+/**
+ * Whole logic of Insertion sort algorithm.
+ */
 public class InsertionSort {
 
     public static void sort(int[] array) {
