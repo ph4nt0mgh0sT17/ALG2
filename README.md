@@ -1,4 +1,5 @@
-# ALG2
-All data structures that will be learned in the course: 7ALG2 - Algorithms and data structures
+# Algorithms and Data structures - ALG2
+This repository serves to storing all projects that are related to the course. All data structures and sort or search algorithms.
 
-
+## Authors
+ph4nt0mgh0sT
