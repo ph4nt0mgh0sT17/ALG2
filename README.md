@@ -39,5 +39,7 @@ This linked list works the same way as **Doubly linked list**. There is some spe
 
 ![Circular linked list](https://media.geeksforgeeks.org/wp-content/uploads/sortedInsertionCircularLinkedList.jpg)
 
+### Array list
+
 ## Authors
 ph4nt0mgh0sT
