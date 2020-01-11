@@ -40,6 +40,8 @@ This linked list works the same way as **Doubly linked list**. There is some spe
 ![Circular linked list](https://media.geeksforgeeks.org/wp-content/uploads/sortedInsertionCircularLinkedList.jpg)
 
 ### Array list
+Array list is same type of collection like **Linked list**. For organization of data it uses Array instead of pointers (**Linked list nodes**).
+I think there is no need for more information. 
 
 ## Authors
 ph4nt0mgh0sT
