@@ -27,7 +27,7 @@ There are a few types of linked list nodes. e.g.:
 #### Singly linked list
 This linked list works only in one way. It can only see linked list nodes in the next pointer. Linked list node doesn't hold a pointer to previous node.
 
-![Singly linked list](https://static.javatpoint.com/ds/images/circular-singly-linked-list.png)
+![Singly linked list](https://media.geeksforgeeks.org/wp-content/uploads/singly-linkedlist.png)
 
 #### Doubly linked list
 This linked list works only in both ways. It can see linked list nodes in both ways. Linked list node holds pointer to previous or next node.
