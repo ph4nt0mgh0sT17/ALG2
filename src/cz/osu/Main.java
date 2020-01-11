@@ -21,7 +21,7 @@ public class Main {
 
         SelectionSort.sort(array);
 
-        System.out.print("The sorted array (Selection sort): " + printArray(array));
+        System.out.print("The sorted array (Selection sort): " + printArray(array) + "\n");
     }
 
     private static String printArray(int[] array) {
