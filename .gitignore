@@ -1,11 +1,2 @@
 .idea/
-.out/
-/out/production/ALG2/META-INF/ALG2.kotlin_module
-/out/production/ALG2/cz/osu/structure/ArrayList.class
-/out/production/ALG2/cz/osu/structure/LinkedList.class
-/out/production/ALG2/cz/osu/structure/LinkedListNode.class
-/out/production/ALG2/cz/osu/Main.class
-/out/production/ALG2/cz/osu/sorting/BubbleSort.class
-/out/production/ALG2/cz/osu/sorting/InsertionSort.class
-/out/production/ALG2/cz/osu/sorting/QuickSort.class
-/out/production/ALG2/cz/osu/sorting/SelectionSort.class
+target/
