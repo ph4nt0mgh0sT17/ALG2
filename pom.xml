@@ -14,7 +14,9 @@
     </properties>
 
     <build>
+
         <plugins>
+            <!-- maven-shade-plugin serves for packaging all dependencies together -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
