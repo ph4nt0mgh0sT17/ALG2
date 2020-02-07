@@ -1,4 +1,9 @@
-.idea/*
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# User-specific stuff
+.idea/**/workspace.xml
+
 .out/
 /out/production/ALG2/META-INF/ALG2.kotlin_module
 /out/production/ALG2/cz/osu/structure/ArrayList.class
@@ -14,3 +19,4 @@
 /target/classes/cz/osu/Main.class
 /target/original-ALG2-1.0.jar
 /target/maven-archiver/pom.properties
+/.idea/compiler.xml
