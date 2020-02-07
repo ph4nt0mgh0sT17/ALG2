@@ -4,19 +4,7 @@
 # User-specific stuff
 .idea/**/workspace.xml
 
-.out/
-/out/production/ALG2/META-INF/ALG2.kotlin_module
-/out/production/ALG2/cz/osu/structure/ArrayList.class
-/out/production/ALG2/cz/osu/structure/LinkedList.class
-/out/production/ALG2/cz/osu/structure/LinkedListNode.class
-/out/production/ALG2/cz/osu/Main.class
-/target/ALG2-1.0.jar
-/target/classes/cz/osu/structure/ArrayList.class
-/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
-/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-/target/classes/cz/osu/structure/LinkedList.class
-/target/classes/cz/osu/structure/LinkedListNode.class
-/target/classes/cz/osu/Main.class
-/target/original-ALG2-1.0.jar
-/target/maven-archiver/pom.properties
+
+/target/
+
 /.idea/compiler.xml
