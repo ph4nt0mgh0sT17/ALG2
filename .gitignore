@@ -1,6 +1,2 @@
-.idea/
-/out/production/ALG2/META-INF/ALG2.kotlin_module
-/out/production/ALG2/cz/osu/structure/ArrayList.class
-/out/production/ALG2/cz/osu/structure/LinkedList.class
-/out/production/ALG2/cz/osu/structure/LinkedListNode.class
-/out/production/ALG2/cz/osu/Main.class
+# Java build files generated.
+/target
