@@ -8,6 +8,7 @@ public class Main {
         Pattern pattern = Pattern.compile("(\\d{2})(\\d{2})(\\d{2})/(\\d+)");
         Matcher mikoMatcher = pattern.matcher("990528/5973");
 
+        // Matcher must be checked if matches then groups can be found
         if (mikoMatcher.matches()) {
             StringBuilder regexReport = new StringBuilder()
                     .append("Year: 19")
