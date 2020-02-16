@@ -1,2 +1,2 @@
-# Java build files generated.
-/target
+.idea/
+target/
