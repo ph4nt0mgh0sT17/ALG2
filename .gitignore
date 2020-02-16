@@ -1,8 +1,2 @@
-# User-specific stuff
-.idea/**/workspace.xml
-
-ALG2.iml
-
-/target/
-
-/.idea/compiler.xml
+.idea/
+target/
