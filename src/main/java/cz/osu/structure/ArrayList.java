@@ -191,6 +191,7 @@ public class ArrayList {
     private void expandArray() {
 
         // Creates a new array with incremented length
+        //TODO: Should implement incrementing the array by half of the current length to make sure copying array won't be repeating after every insert
         int[] tempArray = new int[arrayList.length + 1];
 
         // Copies all values from old array to the new array
