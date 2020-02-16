@@ -1,4 +1,5 @@
 # Default ignored files
+/vcs.xml
 /workspace.xml
 /compiler.xml
 /misc.xml
