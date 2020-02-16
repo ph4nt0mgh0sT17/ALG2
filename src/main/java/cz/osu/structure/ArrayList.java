@@ -5,6 +5,9 @@ package cz.osu.structure;
  */
 public class ArrayList {
 
+    /**
+     * Whole array list of all values.
+     */
     private int[] arrayList;
 
     /**
@@ -41,10 +44,13 @@ public class ArrayList {
      * @throws Exception
      */
     public void addRange(int[] arrayValues) throws Exception {
+
+        // Checks if array to be inserted is empty -> which is forbidden
         if (isArrayEmpty(arrayValues)) {
             throw new Exception("The array cannot be empty.");
         }
 
+        // Adds all values from the added array to our array list
         for (int i = 0; i < arrayValues.length; i++) {
             add(arrayValues[i]);
         }
@@ -57,11 +63,16 @@ public class ArrayList {
      * @throws Exception Throws exception if the index is not valid.
      */
     public void removeAt(int index) throws Exception {
+
+        // Checks if the index is in the boundary of our list
         if (!isIndexValid(index)) {
             throw new Exception("The index is out of bounds!");
         }
 
+        // Removes the value on given index
         removeValueAt(index);
+
+        // Moves the list so there are no null spaces in the array
         moveListAfterRemove(index);
     }
 
@@ -72,12 +83,15 @@ public class ArrayList {
      * @return Boolean value.
      */
     public boolean search(int value) {
+
+        // Search through whole array list and tries to find the value
         for (int i = 0; i < arrayList.length; i++) {
             if (arrayList[i] == value) {
                 return true;
             }
         }
 
+        // If there was no value found
         return false;
     }
 
@@ -99,10 +113,13 @@ public class ArrayList {
      * @throws Exception Throws exception if the index is not valid.
      */
     public int searchAt(int index) throws Exception {
+
+        // Checks if the index is in the boundary of our list
         if (!isIndexValid(index)) {
             throw new Exception("The index is out of bounds!");
         }
 
+        // Returns the value on given index
         return arrayList[index];
     }
 
@@ -116,7 +133,10 @@ public class ArrayList {
     private int internalSearchQuantity(int value) {
         int valueQuantity = 0;
 
+        // Search through whole array list
         for (int i = 0; i < arrayList.length; i++) {
+
+            // If there is value we try to find we can increment our valueQuantity
             if (arrayList[i] == value) {
                 valueQuantity++;
             }
@@ -131,17 +151,28 @@ public class ArrayList {
      * @param index Index of removed value.
      */
     private void moveListAfterRemove(int index) {
+
+        // We move all following values of removed value to the left so we can remove the created new space (0)
         for (int i = index; i < arrayList.length - 1; i++) {
             arrayList[i] = arrayList[i + 1];
         }
     }
 
+    /**
+     * Removes the value of index -> we set it to 0.
+     * @param index The given index
+     */
     private void removeValueAt(int index) {
         arrayList[index] = 0;
     }
 
+    /**
+     * Checks if the index is within the boundaries.
+     * @param index The index.
+     * @return The state of the index.
+     */
     private boolean isIndexValid(int index) {
-        return (index < arrayList.length);
+        return (index < arrayList.length || index > 0);
     }
 
     /**
@@ -158,10 +189,15 @@ public class ArrayList {
      * Expands the array by 1 position.
      */
     private void expandArray() {
+
+        // Creates a new array with incremented length
         int[] tempArray = new int[arrayList.length + 1];
 
+        // Copies all values from old array to the new array
         copyArrayTo(arrayList, tempArray);
 
+        // We set our new array as our main
+        // The old array gets removed by Garbage Collector on the end of the method
         arrayList = tempArray;
     }
 
@@ -172,6 +208,8 @@ public class ArrayList {
      * @param toArray   The destination array.
      */
     private void copyArrayTo(int[] whatArray, int[] toArray) {
+
+        // Copies all values from first array to the second array
         for (int i = 0; i < whatArray.length; i++) {
             toArray[i] = whatArray[i];
         }
