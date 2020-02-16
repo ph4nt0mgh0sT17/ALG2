@@ -1,3 +1,2 @@
-# Java build files generated.
-/target
-*.iml
+.idea/
+target/
