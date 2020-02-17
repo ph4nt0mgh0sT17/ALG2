@@ -1,5 +1,6 @@
 package cz.osu;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -43,6 +44,7 @@ public class Hangman {
 
         scanner = new Scanner(System.in);
         guessedCharacters = new ArrayList<>();
+        hangmanWords = new ArrayList<>();
 
         // Generates the words list
         generateWords();
@@ -53,13 +55,103 @@ public class Hangman {
 
     /**
      * Generates all words that the game can pick.
-     * TODO: Should implement with reading from file.
      */
     private void generateWords() {
-        hangmanWords = new ArrayList<>();
-        hangmanWords.add("Radar");
-        hangmanWords.add("Martin");
-        hangmanWords.add("Lukas");
+
+        DirectoryHandler handler = new DirectoryHandler();
+
+        // If directory 'resources' doesn't exist it will create it
+        if (!handler.fileExists("resources/words.txt")) {
+            handler.createDirectory("resources");
+        }
+
+        // Will fill words.txt file by some values so the Hangman game can retrieves some words data
+        SeedWordsFile();
+
+        // Tries to read whole words.txt and save its content to hangmanWords list
+        saveWordsFromTextFile();
+    }
+
+    /**
+     * Saves all words from words.txt file to the words list in Hangman.
+     */
+    private void saveWordsFromTextFile() {
+
+        // Creates reader of the words.txt file
+        try (BufferedReader reader = createWordsFileReader()) {
+            addAllWordsFromTextFile(reader);
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Adds all words from the words.txt file to the hangmanWords list.
+     * @param reader The reader of words.txt file.
+     * @throws IOException Throws IOException when some forbidden operation.
+     */
+    private void addAllWordsFromTextFile(BufferedReader reader) throws IOException {
+        while (reader.ready()) {
+            hangmanWords.add(reader.readLine());
+        }
+    }
+
+    /**
+     * Fill words.txt by some fixed data
+     */
+    private void SeedWordsFile() {
+
+        // Creates BufferedWriter stream to write some data to txt file
+        try (BufferedWriter writer = createWordsFileWriter()) {
+
+            // Writes some fixed data
+            writeLineToFile(writer,"David");
+            writeLineToFile(writer,"Radek");
+            writeLineToFile(writer,"Marek");
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Creates an initialization of BufferedReader to the words.txt.
+     * @return The BufferedReader.
+     * @throws FileNotFoundException When the file to be read is not found.
+     */
+    private BufferedReader createWordsFileReader() throws FileNotFoundException {
+        return new BufferedReader(
+                new FileReader(
+                        new File("resources/words.txt")
+                )
+        );
+    }
+
+    /**
+     * Creates an initialization of BufferedWriter to the words.txt.
+     * @return The BufferedWriter.
+     * @throws IOException When there will be some forbidden operations.
+     */
+    private BufferedWriter createWordsFileWriter() throws IOException {
+        return new BufferedWriter(
+                new FileWriter(
+                        new File("resources/words.txt")
+                )
+        );
+    }
+
+    /**
+     * Writes some text to the words.txt with a new line.
+     * @param writer The writer of the text file.
+     * @param text The text that will be wrote into the file.
+     * @throws IOException When there are some forbidden operations.
+     */
+    private void writeLineToFile(BufferedWriter writer, String text) throws IOException {
+        writer.write(text);
+        writer.newLine();
     }
 
     /**
