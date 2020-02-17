@@ -1,9 +1,14 @@
 package cz.osu;
 
 public class Main {
-
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
+
+        System.out.println("Type your name: ");
+        String playerName = new Scanner(System.in).nextLine();
+
+        Hangman hangmanGame = new Hangman(playerName);
+        hangmanGame.startGame();
     }
 
     /**
