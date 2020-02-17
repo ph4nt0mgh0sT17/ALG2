@@ -28,7 +28,7 @@ public class Hangman {
     /**
      * Scanner for scanning player's input.
      */
-    Scanner scanner;
+    private Scanner scanner;
 
     /**
      * Constant words
@@ -66,7 +66,7 @@ public class Hangman {
         }
 
         // Will fill words.txt file by some values so the Hangman game can retrieves some words data
-        SeedWordsFile();
+        seedWordsFile();
 
         // Tries to read whole words.txt and save its content to hangmanWords list
         saveWordsFromTextFile();
@@ -101,7 +101,7 @@ public class Hangman {
     /**
      * Fill words.txt by some fixed data
      */
-    private void SeedWordsFile() {
+    private void seedWordsFile() {
 
         // Creates BufferedWriter stream to write some data to txt file
         try (BufferedWriter writer = createWordsFileWriter()) {
