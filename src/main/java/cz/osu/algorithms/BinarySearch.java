@@ -58,16 +58,7 @@ public class BinarySearch {
      * @return The middle index of this range.
      */
     private static int getMiddleIndex(int startIndex, int endIndex) {
-        return startIndex + ((getArrayRange(startIndex,endIndex)) / 2);
+        return (startIndex + endIndex) / 2;
     }
 
-    /**
-     * Gets the range of the array.
-     * @param startIndex The start index of the array.
-     * @param endIndex The end index of the array.
-     * @return The range of the array.
-     */
-    private static int getArrayRange(int startIndex, int endIndex) {
-        return endIndex - startIndex;
-    }
 }
