@@ -63,10 +63,10 @@ public class Hangman {
         // If directory 'resources' doesn't exist it will create it
         if (!handler.fileExists("resources/words.txt")) {
             handler.createDirectory("resources");
-        }
 
-        // Will fill words.txt file by some values so the Hangman game can retrieves some words data
-        seedWordsFile();
+            // Will fill words.txt file by some values so the Hangman game can retrieves some words data
+            seedWordsFile();
+        }
 
         // Tries to read whole words.txt and save its content to hangmanWords list
         saveWordsFromTextFile();
@@ -159,6 +159,8 @@ public class Hangman {
      */
     private void generateNewWord() {
         Random random = new Random();
+
+        // Picks random word from the list
         currentWord = hangmanWords.get(random.nextInt(hangmanWords.size()));
     }
 
