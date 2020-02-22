@@ -315,16 +315,16 @@ public class Hangman {
      * @return Result String without all whitespaces.
      */
     private String removeWhitespaces(String text) {
-        String currentResult = "";
+        StringBuilder currentResult = new StringBuilder();
 
         // Goes through whole String and records only characters that are not whitespaces
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) != ' ') {
-                currentResult += text.charAt(i);
+                currentResult.append(text.charAt(i));
             }
         }
 
-        return currentResult;
+        return currentResult.toString();
     }
 
     /**
@@ -342,7 +342,7 @@ public class Hangman {
 
     /**
      * Gets the current result within guessed characters
-     * @return
+     * @return The current result of the hangman game to keep track of the progress.
      */
     private String getCurrentResult() {
         StringBuilder currentResult = new StringBuilder();
