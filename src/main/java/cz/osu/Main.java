@@ -3,6 +3,13 @@ package cz.osu;
 public class Main {
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
+
+        Cipher cipher = new MorseCipher();
+
+        String encodedMessage = cipher.encrypt("maminka mele maso!!!!!");
+        System.out.println(encodedMessage);
+
+        System.out.println(cipher.decrypt(encodedMessage));
     }
 
     /**
@@ -10,10 +17,10 @@ public class Main {
      * @return The welcome text
      */
     private static String getWelcomeText() {
-        return "==================== 7ALG2 ====================\n" +
-               "|                17. 02. 2020                 |\n" +
-               "|                 David Miko                  |\n" +
-               "===============================================\n";
+        return  "==================== 7ALG2 ====================\n" +
+                "|                24. 02. 2020                 |\n" +
+                "|                 David Miko                  |\n" +
+                "===============================================\n";
     }
 
 }
