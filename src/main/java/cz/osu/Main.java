@@ -4,12 +4,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
 
-        Cipher cipher = new MorseCipher();
+        ICipher ICipher = new MorseCipher();
 
-        String encodedMessage = cipher.encrypt("maminka mele maso!!!!!");
+        String encodedMessage = ICipher.encrypt("maminka mele maso!!!!!");
         System.out.println(encodedMessage);
 
-        System.out.println(cipher.decrypt(encodedMessage));
+        System.out.println(ICipher.decrypt(encodedMessage));
     }
 
     /**

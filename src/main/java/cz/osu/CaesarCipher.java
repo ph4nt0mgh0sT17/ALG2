@@ -3,11 +3,21 @@ package cz.osu;
 /**
  * The class for the logic of cesar cipher
  */
-public class CaesarCipher implements Cipher {
+public class CaesarCipher implements ICipher {
 
+    /**
+     * The offset of the Casar cipher.
+     */
     private int offset;
 
+    /**
+     * The human alphabet in lower case.
+     */
     private String smallAlphabet;
+
+    /**
+     * The human alphabet in capital case
+     */
     private String capitalAlphabet;
 
     /**
@@ -27,6 +37,9 @@ public class CaesarCipher implements Cipher {
         this.offset = offset;
     }
 
+    /**
+     * Initialize all alphabets.
+     */
     private void initializeAlphabet() {
         this.smallAlphabet = "abcdefghijklmnopqrstuvwxyz";
         this.capitalAlphabet =   "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -45,24 +58,32 @@ public class CaesarCipher implements Cipher {
             // Gets the current symbol of searched char
             char currentSymbol = message.charAt(i);
 
-
-            String currentAlphabet;
-
-            // If current symbol is capital then look in the capital alphabet
-            if (isSymbolCapital(currentSymbol)) {
-                currentAlphabet = this.capitalAlphabet;
-            }
-
-            // If the current symbol is lowercase
-            else {
-                currentAlphabet = this.smallAlphabet;
-            }
+            // Determines the current alphabet
+            String currentAlphabet = determineAlphabet(currentSymbol);
 
             // Appends the encoded symbol
             encodedMessage.append(encodeSymbol(currentSymbol, currentAlphabet));
         }
 
         return encodedMessage.toString();
+    }
+
+    /**
+     * Determines the current alphabet according to the current symbol.
+     * @param currentSymbol The current symbol.
+     * @return The alphabet.
+     */
+    private String determineAlphabet(char currentSymbol) {
+
+        // Returns capital alphabet if the current symbol is capital
+        if (isSymbolCapital(currentSymbol)) {
+            return this.capitalAlphabet;
+        }
+
+        // Returns lowercase alphabet if the current symbol is lowercase
+        else {
+            return this.smallAlphabet;
+        }
     }
 
     /**
@@ -175,23 +196,14 @@ public class CaesarCipher implements Cipher {
      */
     public String decrypt(String encodedMessage) {
         StringBuilder decodedMessage = new StringBuilder();
+
         for (int i = 0; i < encodedMessage.length(); i++) {
 
             // Gets the current symbol of searched char
             char currentSymbol = encodedMessage.charAt(i);
 
-
-            String currentAlphabet;
-
-            // If current symbol is capital then look in the capital alphabet
-            if (isSymbolCapital(currentSymbol)) {
-                currentAlphabet = this.capitalAlphabet;
-            }
-
-            // If the current symbol is lowercase
-            else {
-                currentAlphabet = this.smallAlphabet;
-            }
+            // Gets the current alphabet
+            String currentAlphabet = determineAlphabet(currentSymbol);
 
             // Appends the encoded symbol
             decodedMessage.append(decodeSymbol(currentSymbol, currentAlphabet));

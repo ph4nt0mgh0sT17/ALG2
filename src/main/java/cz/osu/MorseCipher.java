@@ -1,8 +1,9 @@
 package cz.osu;
 
-import java.util.ArrayList;
-
-public class MorseCipher implements Cipher {
+/**
+ * The logic of entire morse cipher.
+ */
+public class MorseCipher implements ICipher {
 
     /**
      * The alphabet of the human language.
@@ -25,12 +26,15 @@ public class MorseCipher implements Cipher {
      * Initializes both human and morse alphabets.
      */
     private void initializeAlphabets() {
+
+        // Creates the human alphabet
         humanAlphabet = new String[] {
                 "a","b","c","d","e","f","g","h","i",
                 "j","k","l","m","n","o","p","q",
                 "r","s","t","u","v","w","x","y","z"
         };
 
+        // Creates the more alphabet
         morseAlphabet = new String[] {
                 ".-","-...","-.-.","-..",".","..-.","--.","....",
                 "..",".---","-.-",".-..","--","-.","---",".--.",
@@ -53,6 +57,7 @@ public class MorseCipher implements Cipher {
             // Gets current symbol from the message to operate with it
             String currentSymbol = String.valueOf(message.charAt(i));
 
+            // Appends encrypted symbol to the encrypted message
             encryptedMessage.append(getEncryptedSymbol(currentSymbol));
         }
 
@@ -102,12 +107,31 @@ public class MorseCipher implements Cipher {
 
             // Tries to find the morse symbol in the alphabet and translate it
             for (int j = 0; j < morseAlphabet.length; j++) {
-                if (currentMorseSymbol.equals(morseAlphabet[j])) {
-                    decryptedMessage.append(humanAlphabet[j]);
+
+                // Gets decrypted symbol from the alphabet
+                String decryptedSymbol = getDecryptedSymbol(currentMorseSymbol, j);
+
+                // Adds decrypted symbol to the message if symbol was found
+                if (decryptedSymbol != null) {
+                    decryptedMessage.append(decryptedSymbol);
                 }
             }
         }
 
         return decryptedMessage.toString();
+    }
+
+    /**
+     * Gets decrypted message according to the alphabets.
+     * @param currentMorseSymbol The current morse symbol to be decrypted.
+     * @param currentIndex The current index of the searched morse symbol
+     * @return Returns the decrypted symbol. If symbol is not found then returns null.
+     */
+    private String getDecryptedSymbol(String currentMorseSymbol, int currentIndex) {
+        if (currentMorseSymbol.equals(morseAlphabet[currentIndex])) {
+            return humanAlphabet[currentIndex];
+        }
+
+        return null;
     }
 }
