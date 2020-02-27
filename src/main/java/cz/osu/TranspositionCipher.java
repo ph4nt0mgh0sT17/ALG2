@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * The class for the Transposition cipher logic.
  */
-public class TranspositionCipher implements ICipher {
+public class TranspositionCipher implements Cipher {
 
     /**
      * The key of the transposition cipher.

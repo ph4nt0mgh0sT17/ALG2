@@ -1,15 +1,16 @@
 package cz.osu;
 
 public class Main {
+
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
 
-        ICipher ICipher = new MorseCipher();
+        Cipher morseCipher = new MorseCipher();
 
-        String encodedMessage = ICipher.encrypt("maminka mele maso!!!!!");
+        String encodedMessage = morseCipher.encrypt("maminka mele maso!!!!!");
         System.out.println(encodedMessage);
 
-        System.out.println(ICipher.decrypt(encodedMessage));
+        System.out.println(morseCipher.decrypt(encodedMessage));
     }
 
     /**

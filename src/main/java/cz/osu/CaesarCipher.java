@@ -3,7 +3,7 @@ package cz.osu;
 /**
  * The class for the logic of cesar cipher
  */
-public class CaesarCipher implements ICipher {
+public class CaesarCipher implements Cipher {
 
     /**
      * The offset of the Casar cipher.

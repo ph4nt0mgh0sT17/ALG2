@@ -3,7 +3,7 @@ package cz.osu;
 /**
  * The basic interface for all ciphers.
  */
-public interface ICipher {
+public interface Cipher {
 
     /**
      * Basic method for encrypting.

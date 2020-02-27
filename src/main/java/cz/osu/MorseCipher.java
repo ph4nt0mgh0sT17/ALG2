@@ -3,7 +3,7 @@ package cz.osu;
 /**
  * The logic of entire morse cipher.
  */
-public class MorseCipher implements ICipher {
+public class MorseCipher implements Cipher {
 
     /**
      * The alphabet of the human language.
