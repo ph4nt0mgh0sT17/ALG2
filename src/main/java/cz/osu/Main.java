@@ -1,5 +1,9 @@
 package cz.osu;
 
+import cz.osu.utilites.FileHandler;
+
+import java.io.IOException;
+
 public class Main {
 
     /**
@@ -8,6 +12,12 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
+
+        try {
+            FileHandler.createFile("patrik/deda/index.html");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
