@@ -9,8 +9,27 @@ public class BubbleSort {
      * Sorts given int array using Bubble Sort algorithm.
      * @param array The given integer array.
      */
-    public static void sort(int[] array) {
+    public static void sortSwap(int[] array) {
         internalSort(array);
+    }
+
+    public static void sortLastPlace(int[] array) {
+        int r = array.length - 1;
+        int pom, j;
+
+        do {
+            j = 0;
+            for (int i = 0; i <= r-1; i++) {
+                if (array[i] > array[i+1]) {
+                    pom = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = pom;
+                    j = i;
+                }
+            }
+
+            r = j;
+        } while(r != 0);
     }
 
     /**
@@ -18,22 +37,28 @@ public class BubbleSort {
      * @param array The given int array.
      */
     private static void internalSort(int[] array) {
-        for (int i = 0; i < array.length - 1; i++) {
-            internalBubbleSortLoop(array,i);
-        }
+        boolean withoutSwap;
+        do {
+            withoutSwap = internalBubbleSortLoop(array);
+        } while(!withoutSwap);
     }
+
 
     /**
      * Executes inner loop from Bubble Sort algorithm.
      * @param array The integer array.
-     * @param currentIndex Current index from outer array.
      */
-    private static void internalBubbleSortLoop(int[] array, int currentIndex) {
-        for (int j = 0; j < array.length - currentIndex - 1; j++) {
+    private static boolean internalBubbleSortLoop(int[] array) {
+        boolean withoutSwap = true;
+
+        for (int j = 0; j < array.length - 1; j++) {
             if (array[j] > array[j+1]) {
                 swapArrayValues(array,j,j+1);
+                withoutSwap = false;
             }
         }
+
+        return withoutSwap;
     }
 
     /**
