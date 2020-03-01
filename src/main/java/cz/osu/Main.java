@@ -1,27 +1,23 @@
 package cz.osu;
 
-import java.util.regex.*;
-
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        Pattern pattern = Pattern.compile("(\\d{2})(\\d{2})(\\d{2})/(\\d+)");
-        Matcher mikoMatcher = pattern.matcher("990528/5973");
-
-        // Matcher must be checked if matches then groups can be found
-        if (mikoMatcher.matches()) {
-            StringBuilder regexReport = new StringBuilder()
-                    .append("Year: 19")
-                    .append(mikoMatcher.group(1))
-                    .append("; Month: ")
-                    .append(mikoMatcher.group(2))
-                    .append("; Day: ")
-                    .append(mikoMatcher.group(3))
-                    .append("; Generated code: ")
-                    .append(mikoMatcher.group(4));
-
-            System.out.println(regexReport.toString());
-        }
+    /**
+     * The main entry of the console application.
+     * @param args Arguments that can be passed by command-line.
+     */
+    public static void main(String[] args) {
+        System.out.println(getWelcomeText());
     }
 
+    /**
+     * Gets the welcome text in the console.
+     * @return The welcome text
+     */
+    private static String getWelcomeText() {
+        return  "==================== 7ALG2 ====================\n" +
+                "|                02. 03. 2020                 |\n" +
+                "|                 David Miko                  |\n" +
+                "===============================================\n";
+    }
 }
