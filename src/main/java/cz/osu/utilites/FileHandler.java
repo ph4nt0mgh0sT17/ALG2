@@ -23,7 +23,7 @@ public class FileHandler {
         // Get directory path
         String directoryPath = String.join("/", directories);
 
-        // creates all directories
+        // Creates all directories
         createDirectory(directoryPath);
 
         // Creates the file
@@ -42,9 +42,8 @@ public class FileHandler {
     /**
      * Creates directories by given directory path.
      * @param directoryPath The given directory path.
-     * @return Returns the state if directories were created or not.
      */
-    public static boolean createDirectory(String directoryPath) {
-        return new File(directoryPath).mkdirs();
+    public static void createDirectory(String directoryPath) {
+        new File(directoryPath).mkdirs();
     }
 }
