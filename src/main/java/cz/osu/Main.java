@@ -7,17 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
-
-        Localizer localizer = new Localizer(Language.ENG);
-
-        localizer.printWords();
-
-        Localizer localizer1 = new Localizer();
-
-        localizer1.printWords();
-
-        MainWindow window = new MainWindow();
-
     }
 
     /**
