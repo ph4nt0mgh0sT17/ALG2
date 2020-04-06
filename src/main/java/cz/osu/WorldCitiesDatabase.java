@@ -27,25 +27,36 @@ public class WorldCitiesDatabase {
             // If there is match in the line
             if (lineMatcher.find()) {
 
-                // Declares some main variables that will be used
-                String cityName = lineMatcher.group(1);
-                double latitude = Double.parseDouble(lineMatcher.group(2));
-                double longitude = Double.parseDouble(lineMatcher.group(3));
-                String countryName = lineMatcher.group(4);
-
-                // Initializes the city item
-                CityItem currentItem = new CityItem(cityName, latitude, longitude, countryName);
+                // Builds the CityItem
+                CityItem currentItem = buildCityItem(lineMatcher);
 
                 // Adds created item to the list
                 this.cities.add(currentItem);
             }
 
             else {
+
                 // If there was no match add null value
                 this.cities.add(null);
             }
 
         }
+    }
+
+    /**
+     * Builds the {@link CityItem} using the RegEx {@link Matcher}.
+     * @param lineMatcher The regex {@link Matcher} where are the {@link CityItem} values.
+     * @return The built {@link CityItem}.
+     */
+    private CityItem buildCityItem(Matcher lineMatcher) {
+        // Declares some main variables that will be used
+        String cityName = lineMatcher.group(1);
+        double latitude = Double.parseDouble(lineMatcher.group(2));
+        double longitude = Double.parseDouble(lineMatcher.group(3));
+        String countryName = lineMatcher.group(4);
+
+        // Initializes the city item
+        return new CityItem(cityName, latitude, longitude, countryName);
     }
 
     /**
@@ -57,7 +68,7 @@ public class WorldCitiesDatabase {
 
         // At the beginning we should get first item in the list so we can compare it in the iteration loop
         CityItem searchedCity = this.cities.get(0);
-        double currentNearestDistance = GeographicEngine.getDistance(searchedCoordinate, searchedCity.getCoordinate());
+        double nearestDistance = GeographicEngine.getDistance(searchedCoordinate, searchedCity.getCoordinate());
 
         for (int index = 1; index < this.cities.size(); index++) {
 
@@ -73,9 +84,9 @@ public class WorldCitiesDatabase {
             double currentDistance = GeographicEngine.getDistance(searchedCoordinate, currentCity.getCoordinate());
 
             // Compares given coordinations if they are nearer than before
-            if (currentDistance < currentNearestDistance) {
+            if (currentDistance < nearestDistance) {
                 searchedCity = currentCity;
-                currentNearestDistance = currentDistance;
+                nearestDistance = currentDistance;
             }
         }
 
@@ -104,7 +115,7 @@ public class WorldCitiesDatabase {
             this.cities.remove(searchedLocation);
         }
 
-        // I will load the pointer to the all values inot the cities variable
+        // I will load the pointer to the all values into the cities variable
         // No need for copying
         this.cities = tempItems;
 
