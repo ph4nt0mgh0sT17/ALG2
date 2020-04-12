@@ -7,18 +7,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
 
-        WorldCitiesDatabase database = new WorldCitiesDatabase();
-        database.loadData();
-
-        long startTime = System.nanoTime();
-        CityItem[] searchedLocation = database.searchFiveCities(new Coordinate(49.8304,18.2500));
-        long endTime = System.nanoTime();
-
-        System.out.println("> SearchLocations: " + (endTime - startTime) / 1000 / 1000 + " ms");
-
-        for (CityItem currentCityItem : searchedLocation) {
-            System.out.println(currentCityItem);
-        }
+        Person man = new Person("Josef", "Novák", Sex.MALE);
+        Person woman = new Person("Marie", "Stará", Sex.FEMALE);
+        LineageNode first = new LineageNode(man, woman, 2);
+        Lineage.simulateLineage(first);
+        Lineage.printLineage(first, 0);
     }
 
     /**
@@ -27,7 +20,7 @@ public class Main {
      */
     private static String getWelcomeText() {
         return  "==================== 7ALG2 ====================\n" +
-                "|                05. 04. 2020                 |\n" +
+                "|                06. 04. 2020                 |\n" +
                 "|                 David Miko                  |\n" +
                 "===============================================\n";
     }
