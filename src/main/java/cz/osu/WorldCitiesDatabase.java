@@ -18,10 +18,24 @@ public class WorldCitiesDatabase {
     public void loadData() {
         ArrayList<String> lines = FileManager.getFileContent("worldcities.csv");
 
+        long startTime = System.nanoTime();
+
+        // Checks using regex pattern for the values inside the line
+        Pattern linePattern = Pattern.compile(
+                "\"([^\"]+)\" # Gets the name of the city from the line .csv\n" +
+                        ",\"[^\"]+\", # Ignores the second name of the city\n" +
+                        "\"([0-9.-]+)\", # Gets the latitude\n" +
+                        "\"([0-9.-]+)\", # Gets the longitude\n" +
+                        "\"([^\"]+)\" # Gets the country name\n" +
+                        ".* # Everything else is ignored\n",
+                Pattern.COMMENTS | Pattern.DOTALL);
+
+        long endTime = System.nanoTime();
+
+        System.out.println("> Regex pattern compile: " + (endTime - startTime) / 1000 / 1000 + " ms");
+
         for (String line : lines) {
 
-            // Checks using regex pattern for the values inside the line
-            Pattern linePattern = Pattern.compile("\"([^\"]+)\",\"[^\"]+\",\"([0-9.-]+)\",\"([0-9.-]+)\",\"([^\"]+)\".*");
             Matcher lineMatcher = linePattern.matcher(line);
 
             // If there is match in the line
@@ -49,6 +63,7 @@ public class WorldCitiesDatabase {
      * @return The built {@link CityItem}.
      */
     private CityItem buildCityItem(Matcher lineMatcher) {
+
         // Declares some main variables that will be used
         String cityName = lineMatcher.group(1);
         double latitude = Double.parseDouble(lineMatcher.group(2));
@@ -101,7 +116,7 @@ public class WorldCitiesDatabase {
     public CityItem[] searchFiveCities(Coordinate searchedCoordinate) {
 
         // Backups all values because I will be deleting searched locations...
-        ArrayList<CityItem> tempItems = new ArrayList<CityItem>(this.cities);
+        ArrayList<CityItem> tempItems = new ArrayList<>(this.cities);
 
         CityItem[] searchedLocations = new CityItem[5];
 

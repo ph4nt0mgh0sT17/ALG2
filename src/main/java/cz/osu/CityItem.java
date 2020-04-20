@@ -1,7 +1,5 @@
 package cz.osu;
 
-import java.math.BigDecimal;
-
 public class CityItem {
 
     private String name;
