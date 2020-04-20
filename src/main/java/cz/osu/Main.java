@@ -7,18 +7,21 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
 
-        WorldCitiesDatabase database = new WorldCitiesDatabase();
-        database.loadData();
+        String text = "Algoritmy a datove struktury - Huffmanovo kodovani 20.4.2020, ALDS2";
 
-        long startTime = System.nanoTime();
-        CityItem[] searchedLocation = database.searchFiveCities(new Coordinate(49.8304,18.2500));
-        long endTime = System.nanoTime();
+        Huffman huffman = new Huffman(text);
 
-        System.out.println("> SearchLocations: " + (endTime - startTime) / 1000 / 1000 + " ms");
+        huffman.printHuffmanCode();
 
-        for (CityItem currentCityItem : searchedLocation) {
-            System.out.println(currentCityItem);
-        }
+        String encodedText = huffman.encode(text);
+
+        int dataCompulsion = (encodedText.length() % 8 == 0) ? encodedText.length() / 8 : encodedText.length() / 8 + 1;
+
+        System.out.println("Encoded Text: " + encodedText + " | Data compulsion " + dataCompulsion);
+
+        String decodedText = huffman.decode(encodedText);
+        System.out.println("Decoded Text: " + decodedText + " | Data compulsion " + decodedText.length());
+
     }
 
     /**
@@ -27,7 +30,7 @@ public class Main {
      */
     private static String getWelcomeText() {
         return  "==================== 7ALG2 ====================\n" +
-                "|                05. 04. 2020                 |\n" +
+                "|                20. 04. 2020                 |\n" +
                 "|                 David Miko                  |\n" +
                 "===============================================\n";
     }
