@@ -1,6 +1,8 @@
 package cz.osu;
 
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
 
@@ -16,9 +18,9 @@ public class Main {
 
         System.out.println("> SearchLocations: " + (endTime - startTime) / 1000 / 1000 + " ms");
 
-        for (CityItem currentCityItem : searchedLocation) {
-            System.out.println(currentCityItem);
-        }
+        Arrays.stream(searchedLocation)
+                .forEach(System.out::println);
+
     }
 
     /**
