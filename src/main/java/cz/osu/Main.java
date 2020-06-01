@@ -1,26 +1,34 @@
 package cz.osu;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Main {
+
+    /*
+     *  This program will serve for testing my skill-set for 7ALG2.
+     *
+     *  The goal is to create a class of User that is within some database. We can sort the database, search in the database.
+     */
 
     public static void main(String[] args) {
         System.out.println(getWelcomeText());
 
-        WorldCitiesDatabase database = new WorldCitiesDatabase();
-        database.loadData();
+        UserDatabase userDatabase = new UserDatabase();
 
-        long startTime = System.nanoTime();
-        CityItem[] searchedLocation = database.searchFiveCities(new Coordinate(49.8304,18.2500));
-        long endTime = System.nanoTime();
+        userDatabase.loadUserDatabase();
+        userDatabase.fillDatabase();
 
-        System.out.println("> SearchLocations: " + (endTime - startTime) / 1000 / 1000 + " ms");
 
-        Arrays.stream(searchedLocation)
-                .forEach(System.out::println);
+        System.out.println();
 
+        userDatabase.sortByFirstName();
+
+        System.out.println();
+
+        userDatabase.sortBySecondName();
+
+        System.out.println();
+
+        userDatabase.sortByAge();
     }
 
     /**
@@ -29,7 +37,7 @@ public class Main {
      */
     private static String getWelcomeText() {
         return  "==================== 7ALG2 ====================\n" +
-                "|                05. 04. 2020                 |\n" +
+                "|                06. 01. 2020                 |\n" +
                 "|                 David Miko                  |\n" +
                 "===============================================\n";
     }
