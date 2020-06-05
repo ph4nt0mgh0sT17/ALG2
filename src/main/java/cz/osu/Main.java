@@ -15,7 +15,7 @@ public class Main {
         UserDatabase userDatabase = new UserDatabase();
 
         userDatabase.loadUserDatabase();
-        userDatabase.fillDatabase();
+        userDatabase.measureFillingDatabase();
 
 
         System.out.println();

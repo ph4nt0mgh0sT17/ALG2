@@ -5,9 +5,10 @@ import java.util.*;
 
 public class UserDatabase {
 
-    private List<User> userDatabase;
+    private final List<User> userDatabase;
 
-    private List<String> firstNames, lastNames;
+    private final List<String> firstNames;
+    private final List<String> lastNames;
 
     public UserDatabase() {
         userDatabase = new ArrayList<>();
@@ -19,10 +20,14 @@ public class UserDatabase {
         loadLastNames();
     }
 
-    public void fillDatabase() {
-        for (int i = 0; i < 100000000; i++) {
+    private void fillDatabase() {
+        for (int i = 0; i < 1000000; i++) {
             userDatabase.add(generateUser());
         }
+    }
+
+    public void measureFillingDatabase() {
+        TimeIt.measureTime(this::fillDatabase);
     }
 
     public void printUsers() {
@@ -31,6 +36,8 @@ public class UserDatabase {
 
     public void sortByFirstName() {
         TimeIt.measureTime(() -> userDatabase.sort(Comparator.comparing(User::getFirstName)));
+
+        userDatabase.sort(Comparator.comparing(User::getFirstName));
     }
 
     public void sortBySecondName() {
@@ -38,7 +45,7 @@ public class UserDatabase {
     }
 
     public void sortByAge() {
-        TimeIt.measureTime(this::run);
+        TimeIt.measureTime(() -> userDatabase.sort(Comparator.comparing(User::getAge)));
     }
 
     private User generateUser() {
@@ -58,9 +65,5 @@ public class UserDatabase {
     private void loadLastNames() {
         String line = FileManager.getFileContent("last_names.txt");
         lastNames.addAll(Arrays.asList(line.split(",")));
-    }
-
-    private void run() {
-        userDatabase.sort(Comparator.comparing(User::getAge));
     }
 }
