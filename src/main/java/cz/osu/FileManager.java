@@ -3,30 +3,29 @@ package cz.osu;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 public class FileManager {
 
-    public static String getFileContent(String fileName) {
-        File file;
+    public static ArrayList<String> getFileContent(String fileName) {
+
+        File file = new File(FileManager.class.getClassLoader().getResource(fileName).getFile());
+
+
+        ArrayList<String> lines = new ArrayList<>();
 
         try {
-            file = new File(FileManager.class.getClassLoader().getResource(fileName).getFile());
+            lines.addAll(Files.readAllLines(file.toPath()));
         }
 
-        catch (Exception ex) {
+        catch (IOException ex) {
             ex.printStackTrace();
             return null;
         }
 
-        try {
-            return Files.readAllLines(file.toPath()).get(0);
-        }
+        // Removes the head
+        lines.remove(0);
 
-        catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-
-
+        return lines;
     }
 }

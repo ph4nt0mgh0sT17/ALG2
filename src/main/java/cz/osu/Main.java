@@ -1,44 +1,29 @@
 package cz.osu;
 
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
-    /*
-     *  This program will serve for testing my skill-set for 7ALG2.
-     *
-     *  The goal is to create a class of User that is within some database. We can sort the database, search in the database.
-     */
-
     public static void main(String[] args) {
-        System.out.println(getWelcomeText());
+        ExchangeRateDatabase rateDatabase = new ExchangeRateDatabase();
 
-        UserDatabase userDatabase = new UserDatabase();
+        rateDatabase.enlistRates();
 
-        userDatabase.loadUserDatabase();
-        userDatabase.measureFillingDatabase();
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Zadej pocet penez: ");
 
-        System.out.println();
+        double value = scanner.nextDouble();
 
-        userDatabase.sortByFirstName();
+        System.out.print("Zadej puvodni menu: ");
 
-        System.out.println();
+        String defaultRate = scanner.next();
 
-        userDatabase.sortBySecondName();
+        System.out.print("Zadej novou menu: ");
 
-        System.out.println();
+        String newRate = scanner.next();
 
-        userDatabase.sortByAge();
-    }
-
-    /**
-     * Gets the welcome text in the console.
-     * @return The welcome text
-     */
-    private static String getWelcomeText() {
-        return  "==================== 7ALG2 ====================\n" +
-                "|                06. 01. 2020                 |\n" +
-                "|                 David Miko                  |\n" +
-                "===============================================\n";
+        System.out.println(rateDatabase.convert(value, defaultRate, newRate));
     }
 }
