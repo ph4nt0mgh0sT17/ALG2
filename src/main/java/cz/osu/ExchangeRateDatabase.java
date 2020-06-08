@@ -20,7 +20,13 @@ public class ExchangeRateDatabase {
         lines.forEach((line) -> {
             String[] parsedLine = line.split(";");
 
-            exchangeRates.add(new ExchangeRateModel(parsedLine[0], parsedLine[2], Double.parseDouble(parsedLine[4]), Double.parseDouble(parsedLine[5])));
+            exchangeRates.add(
+                    new ExchangeRateModel(
+                            parsedLine[0], parsedLine[2],
+                            Double.parseDouble(parsedLine[4]),
+                            Double.parseDouble(parsedLine[5])
+                    )
+            );
         });
     }
 
